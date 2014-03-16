@@ -1,3 +1,7 @@
+"""
+DiabloHorn http://diablohorn.wordpress.com
+Simple script to dump some memory using winappdbg
+"""
 from winappdbg import Debug, EventHandler
 from winappdbg.win32 import *
 import sys

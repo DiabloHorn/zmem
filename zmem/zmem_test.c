@@ -1,3 +1,6 @@
+/*
+	DiabloHorn http://diablohorn.wordpress.com
+*/
 #include "zmem.h"
 
 /* not intended as a full on test case */

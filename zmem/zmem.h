@@ -1,3 +1,6 @@
+/*
+	DiabloHorn http://diablohorn.wordpress.com
+*/
 #ifndef ZMEM_H
 #define ZMEM_H
 #include <Windows.h>

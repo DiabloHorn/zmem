@@ -1,3 +1,6 @@
+/*
+	DiabloHorn http://diablohorn.wordpress.com
+*/
 #include "zmem.h"
 #include <malloc.h>
 
