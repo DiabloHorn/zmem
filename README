@@ -1,0 +1,37 @@
+                zmem 
+    zeroes memory before it's freed
+
+This is a simple and small project that wraps the following APIs:
+
+free        --> zfree
+GlobalFree  --> zGlobalFree
+LocalFree   --> zLocalFree
+HeapFree    --> zHeapFree
+
+The only action that is performed by the wrapper is to zero the memory before
+it's released. The goal is to prevent the leaking of sensitive information when
+someone performs memory forensics on your machine.
+
+As an example here is the output of a small test application:
+        /* used z* free functions */
+        entered hooked heapfree
+        entered hooked globalfree
+        entered hooked localfree
+        entered hooked heapfree
+        /* used regular free functions */
+        entered hooked heapfree
+        eeeeeeeeeeeeeeeeeeeeeeeeeee
+        eeeeeeeeeeeeeeeeeeee
+        entered hooked globalfree
+        fffffffffffffffffffffffffff
+        ffffffffffffffffffff
+        entered hooked localfree
+        ggggggggggggggggggggggggggg
+        gggggggggggggggggggg
+        entered hooked heapfree
+        hhhhhhhhhhhhhhhhhhhhhhhhhhh
+        hhhhhhhhhhhhhhhhhhhh
+
+Like you can see the first output contains blank lines the second output of the
+same functions contain data. As you can imagine the second ones didn't implement
+the z* function.
